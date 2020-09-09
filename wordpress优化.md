@@ -173,3 +173,21 @@ register_deactivation_hook( __FILE__, 'disable_embeds_flush_rewrite_rules' );
     }
     add_filter( ‘wp_resource_hints’, ‘remove_dns_prefetch’, 10, 2 );
 ```
+
+```
+ 禁止 favicon.ico 请求
+
+favicon.ico 图标用于收藏夹图标和浏览器标签上的显示，如果不设置，浏览器会请求网站根目录的这个图标，如果网站根目录也没有这图标会产生 404。出于优化的考虑，要么就有这个图标，要么就禁止产生这个请求。
+
+在做 H5 混合应用的时候，不希望产生 favicon.ico 的请求。
+
+可以在页面的 <head> 区域，加上如下代码实现屏蔽：
+
+<link rel="icon" href="data:;base64,=">
+
+或者详细一点
+
+<link rel="icon" href="data:image/ico;base64,aWNv">
+
+当然，既然是 dataURL 方式，IE < 8 等 old brower 就别想了 ╮(╯-╰)╭
+```
