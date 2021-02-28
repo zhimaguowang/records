@@ -75,5 +75,8 @@ systemctl restart goflyway
 
 EOF
 
+# 启动Goflyway主服务和“定时重启计划任务服务”。
 systemctl start goflyway
+systemctl start goflyway-restart-cron.timer
 systemctl enable goflyway
+systemctl enable goflyway-restart-cron.timer
